@@ -1,0 +1,30 @@
+{
+  "secret": "bbcloud",
+  "mongodb": "mongodb://127.0.0.1/customer",
+  "authServicePort": 3001,
+  "deviceServicePort":3000,
+  "senecaPort": 10102,
+  "wechat": {
+    "appId": "wxb2e3dcdb3feec39d",
+    "appSecret": "988a6655929092ab96c1f81b5d5dd9dc",
+    "client": "wechat",
+    "callbackUrl": "http://czcioutest.ittun.com/auth/customer/wechat/callback",
+    "scope": "snapi_userinfo",
+    "state": "bbcloud_state",
+    "token": "bbcloud"
+  },
+  "seneca": {
+    "administrator": {
+      "port": 10103
+    },
+    "manufacturer": {
+      "port": 10102
+    },
+    "device": {
+      "port": 10104
+    },
+    "customer": {
+      "port": 10101
+    }
+  }
+}
