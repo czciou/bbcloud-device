@@ -14,30 +14,14 @@ var seneca = senecaLib().client(nconf.get('seneca:device:port'));
 var act = Promise.promisify(seneca.act, {context: seneca});
 
 describe('device', function() {
-  // it('should return ok ???',function () {
-  //   return act('role:device, cmd:exportDevices',{})
-  //   .then(function (result) {
-  //     console.log('result',result);
-  //       expect(result.msg).to.be.a('string');
-  //       expect(result.msg).to.be.equals('ok czt');
-  //     })
-  // });
-
-  it('should create a new device', function() {
-
-      return act('role:mongoose-entity, cmd:create', {
-          data:{
-            name:'cjj',
-            bbcloudDeviceId:'bbid',
-            wechatDeviceId:'wchatid',
-            aliyunDeviceId:'aliid'
-          },
-          model:'Device'
+  it('should return {msg:"ok"}', function() {
+      return act('role:device, cmd:import-devices', {
+          aliIdFilePath:path.join(__dirname, '/aliDeviceIds.json'),
+          macIdFilePath:path.join(__dirname, '/macIds.xlsx')
       }).then(function(results) {
-        console.log('results:',results.name);
-        expect(results.name).to.be.a('string');
+        expect(results.msg).to.be.a('string');
+        expect(results.msg).to.be.equals('ok');
       });
-
     });
 
 });
